@@ -14,7 +14,7 @@ def get_weather(city_name):
 
     x = response.json()
 
-    if x['cod'] == '200':
+    if x['cod'] == int('200'):
         temp = x['main']['temp']
         pressure = x['main']['pressure']
         humidity = x['main']['humidity']
@@ -79,19 +79,19 @@ def get_weather(city_name):
         print('Wind Speed: ' + str(round(wind_speed, 2)) + 'm/s')
         print('Wind Direction: ' + str(wind_direction))
 
-    elif x['cod'] == '401':
+    elif x['cod'] == int('401'):
         print('Invalid API key')
 
-    elif x['cod'] == '404':
+    elif x['cod'] == int('404'):
         print('City not found')
         print('Try Again')
         get_input()
-    
-    elif x['cod'] == '429':
+
+    elif x['cod'] == int('429'):
         print('You have free tariff and make more than 60 API calls per minute')
 
     else:
-        print(x['cod'], x['message'] )
+        print(x['cod'])
 
 
 def get_input():
